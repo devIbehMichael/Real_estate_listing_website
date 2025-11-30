@@ -142,7 +142,7 @@ const AdminProperties = () => {
                                         <div className="text-sm font-medium text-indigo-600 truncate">{property.title}</div>
                                         <div className="flex items-center text-sm text-gray-500">
                                             <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${property.status === 'Available' ? 'bg-green-100 text-green-800' :
-                                                    property.status === 'Sold' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'
+                                                property.status === 'Sold' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'
                                                 }`}>
                                                 {property.status}
                                             </span>
@@ -166,14 +166,13 @@ const AdminProperties = () => {
 
             {isModalOpen && (
                 <div className="fixed inset-0 z-10 overflow-y-auto">
-                    <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+                    <div className="flex items-center justify-center min-h-screen px-4 py-6">
+                        <div className="fixed inset-0 transition-opacity" aria-hidden="true" onClick={() => setIsModalOpen(false)}>
                             <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
                         </div>
-                        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                <div className="flex justify-between items-center mb-4">
+                        <div className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-full max-w-lg max-h-[90vh] flex flex-col">
+                            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 overflow-y-auto">
+                                <div className="flex justify-between items-center mb-4 sticky top-0 bg-white pb-4 z-10">
                                     <h3 className="text-lg leading-6 font-medium text-gray-900">{editingProperty ? 'Edit Property' : 'Add Property'}</h3>
                                     <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-500">
                                         <X className="h-6 w-6" />
@@ -229,7 +228,7 @@ const AdminProperties = () => {
                                         <label className="block text-sm font-medium text-gray-700">Images</label>
                                         <ImageUpload onUpload={handleImageUpload} existingImages={formData.images} />
                                     </div>
-                                    <div className="mt-5 sm:mt-6">
+                                    <div className="mt-5 sm:mt-6 sticky bottom-0 bg-white pt-4">
                                         <button type="submit" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
                                             {editingProperty ? 'Update Property' : 'Create Property'}
                                         </button>
